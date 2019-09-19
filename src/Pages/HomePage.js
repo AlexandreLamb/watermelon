@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link} from 'react-router-dom';
+
 class HomePage extends Component {
     constructor(props){
         super(props)
@@ -9,7 +11,16 @@ class HomePage extends Component {
     render(){
         return(
             <div>
-                HomePage
+                <ul>
+                    <li>
+                        1
+                    </li>
+                    <li>
+                        1
+                    </li>
+                    
+                </ul>
+
             </div>
         )
     }

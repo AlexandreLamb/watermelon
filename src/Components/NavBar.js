@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Navbar,Nav, Form, FormControl, Button} from 'react-bootstrap';
-import { BrowserRouter, Route, Link} from 'react-router-dom';
-import HomePage from '../Pages/HomePage';
-
+import {Navbar,NavItem, Nav,Form, FormControl, Button} from 'react-bootstrap';
+import { BrowserRouter, Route, NavLink} from 'react-router-dom';
+import { LinkContainer } from "react-router-bootstrap";
+import Routes from './Routes';
 class NavBar extends Component{
 
 render(){
@@ -12,20 +12,21 @@ render(){
             <Navbar.Brand href="#home">Watermelon</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link ><Link to="/" >Home</Link></Nav.Link>
-                        <Nav.Link ><Link to="/UserInforamtion" >User Information</Link></Nav.Link>
-                        <Nav.Link >Transfers</Nav.Link>
+                <Nav className="mr-auto">
+                <Nav.Link>
+                    <LinkContainer to="/">
+                        <NavItem>Home</NavItem>
+                    </LinkContainer>
+                </Nav.Link>
+                <Nav.Link>
+                    <LinkContainer to="/UserInformation">
+                        <NavItem>User Information</NavItem>
+                    </LinkContainer>
+                </Nav.Link>
                     </Nav>
-                    <Route exact path="/"
-                    component={()=><HomePage></HomePage>}
-                    ></Route>
-                    <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-success">Search</Button>
-                    </Form>
                 </Navbar.Collapse>
         </Navbar>
+        <Routes/>
         </BrowserRouter>
     )
 }
