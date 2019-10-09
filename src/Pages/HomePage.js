@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link} from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
 
 class HomePage extends Component {
     constructor(props){
@@ -11,16 +11,8 @@ class HomePage extends Component {
     render(){
         return(
             <div>
-                <ul>
-                    <li>
-                        1
-                    </li>
-                    <li>
-                        1
-                    </li>
-                    
-                </ul>
-
+              Transaction recentes
+              {this.props.email}
             </div>
         )
     }
