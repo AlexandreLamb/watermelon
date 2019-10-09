@@ -1,87 +1,34 @@
 import React, { Component } from 'react';
-import { Card, Container, Row, Col,Form, Button } from 'react-bootstrap';
+import AddCard from '../Components/AddCard'
+import Card from 'react-credit-cards'
+import 'react-credit-cards/es/styles-compiled.css';
 class CardManagePage extends Component {
     constructor(props){
         super(props)
         this.state = {
-          
-             id : '',
-             last_4 : '',
-             brand : 'Visa',
-             expired_at : ''
+          number: '',
+          name: '',
+          expiry: '',
+          cvc: '',
+          issuer: '',
+          focused: '',
+          formData: null,
            
         }
-        this.registerCard = this.registerCard.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+       
     }
-    handleChange(event){
-      
-      this.setState({
-      
-          [event.target.name] : event.target.value
-        
-      });
-  }
-    registerCard(props){
-      console.log(this.state.brand ? this.state.brand : "Visa")
-      let cards = localStorage.getItem("Cards") ? JSON.parse(localStorage.getItem("Cards")) : [] ;
-      console.log(cards);
-
-      cards.push(this.state);
-      localStorage.setItem("Cards",JSON.stringify(cards));
-    }
+    
     render(){
         return(
             <div>
-              <Card >
-                <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Form>
-                <Container>
-                  <Row>   
-                    <Col>
-                      <Form.Control
-                      name="last_4"
-                      onChange={this.handleChange}
-                      value={this.state.last_4} 
-                      placeholder="Last four"/>
-                    </Col>
-                    <Col>
-                      <Form.Control
-                      name="expired_at"
-                      value={this.state.expired_at}
-                      onChange={this.handleChange}
-                      type="date"
-                       />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                    <Form.Group as={Col} controlId="formGridState">
-                      <Form.Control 
-                      name="brand"
-                      value={this.state.brand}
-                      onChange={this.handleChange}
-                      as="select">
-                        <option>Visa</option>
-                        <option>Master Card</option>
-                        <option>American express</option>
-                      </Form.Control>
-                    </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                    <Button variant="primary" onClick={this.registerCard}>
-                      Submit
-                    </Button>
-                    </Col>
-                  </Row>
-                </Container>
-                </Form>
-                </Card.Body>
-              </Card>
-              {this.state.brand}
+                <AddCard/>
+                <Card
+                name="John Smith"
+                number="5555 4444 3333 1111"
+                expiry="10/20"
+                cvc="737"
+              />
+
             </div>
         )
     }

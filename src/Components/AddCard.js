@@ -1,0 +1,90 @@
+import React, { Component } from 'react';
+import { Card, Container, Row, Col,Form, Button } from 'react-bootstrap';
+class AddCard extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+          
+             user : localStorage.getItem("connectUser"),
+             last_4 : '',
+             brand : 'Visa',
+             expired_at : ''
+           
+        }
+        this.registerCard = this.registerCard.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event){
+      
+      this.setState({
+      
+          [event.target.name] : event.target.value
+        
+      });
+  }
+    registerCard(props){
+      let cards = localStorage.getItem("Cards") ? JSON.parse(localStorage.getItem("Cards")) : [] ;
+      cards.push(this.state);
+      localStorage.setItem("Cards",JSON.stringify(cards));
+    }
+    render(){
+        return(
+            <div>
+              <Card >
+                <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Form>
+                <Container>
+                  <Row>   
+                    <Col>
+                      <Form.Control
+                      name="last_4"
+                      onChange={this.handleChange}
+                      value={this.state.last_4} 
+                      placeholder="Last four"/>
+                    </Col>
+                    <Col>
+                      <Form.Control
+                      name="expired_at"
+                      value={this.state.expired_at}
+                      onChange={this.handleChange}
+                      type="date"
+                       />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                    <Form.Group as={Col} controlId="formGridState">
+                      <Form.Control 
+                      name="brand"
+                      value={this.state.brand}
+                      onChange={this.handleChange}
+                      as="select">
+                        <option>Visa</option>
+                        <option>Master Card</option>
+                        <option>American express</option>
+                      </Form.Control>
+                    </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                    <Button variant="primary" onClick={this.registerCard}>
+                      Submit
+                    </Button>
+                    </Col>
+                  </Row>
+                </Container>
+                </Form>
+                </Card.Body>
+              </Card>
+            </div>
+        )
+    }
+
+
+}
+
+export default AddCard;
+
+     
