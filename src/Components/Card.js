@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Card extends Component {
+class CardDisplay extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -10,11 +10,11 @@ class Card extends Component {
     render(){
         return(
             <div>
-                
+               
             </div>
         )
     }
 
 
 }
-export default Card;
+export default CardDisplay;
