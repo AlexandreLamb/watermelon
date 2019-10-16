@@ -22,7 +22,7 @@ class CardManagePage extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <AddCard onChangeCard={this.onChangeCard.bind(this)}/>
+                        <AddCard mode ="Add" onChangeCard={this.onChangeCard.bind(this)}/>
                     </Col>
                     <Col>
                         <CardList onChangeCard={this.onChangeCard.bind(this)}

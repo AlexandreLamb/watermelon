@@ -6,14 +6,15 @@ class AddCard extends Component {
         this.state = {
           
              user : localStorage.getItem("connectUser"),
-             last_4 : '',
-             brand : 'Visa',
-             expired_at : '',
+             last_4 : props.last_4  ? props.last_4 : '',
+             brand : props.brand ? props.brand : '',
+             expired_at : props.expired_at  ? props.expired_at : '',
              id : ''
            
         }
         this.registerCard = this.registerCard.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.updateCard = this.updateCard.bind(this);
     }
     handleChange(event){
       
@@ -34,12 +35,19 @@ class AddCard extends Component {
       localStorage.setItem("Cards",JSON.stringify(cards));
       this.props.onChangeCard();
     }
+    updateCard(props){
+      let cards = localStorage.getItem("Cards") ? JSON.parse(localStorage.getItem("Cards")) : [] ;
+      cards.splice(this.props.cards.indexOf(this.props.card),1,this.state)
+      localStorage.setItem("Cards",JSON.stringify(cards));
+      this.props.onChangeCard();
+
+    }
     render(){
         return(
             <div>
               <Card >
                 <Card.Body>
-                <Card.Title>Add Card</Card.Title>
+                <TitleMode mode={this.props.mode}/>
                 <Form>
                 <Container>
                   <Row>   
@@ -76,7 +84,7 @@ class AddCard extends Component {
                   </Row>
                   <Row>
                     <Col>
-                    <Button variant="primary" onClick={this.registerCard}>
+                    <Button variant="primary" onClick={this.props.mode == "Add" ? this.registerCard : this.updateCard }>
                       Submit
                     </Button>
                     </Col>
@@ -88,8 +96,19 @@ class AddCard extends Component {
             </div>
         )
     }
+}
+function TitleMode(props){
+  if(props.mode == "Add"){
+      return (
+        <Card.Title>Add Card</Card.Title>
+      )
+  }
+  else {
+    return(
+      <Card.Title>Update Card</Card.Title>
 
-
+    )
+  }
 }
 
 export default AddCard;
