@@ -63,9 +63,6 @@ class UserInscriptionPage extends Component {
                     Submit
                 </Button>
                 </Form>
-                <Button variant="primary" onClick={this.handleUsers}>
-                    recup
-                </Button>
             </div>
         )
     }
