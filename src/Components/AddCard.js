@@ -32,7 +32,7 @@ class AddCard extends Component {
             <div>
               <Card >
                 <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>Add Card</Card.Title>
                 <Form>
                 <Container>
                   <Row>   
