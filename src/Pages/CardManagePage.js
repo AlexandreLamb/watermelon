@@ -10,19 +10,23 @@ class CardManagePage extends Component {
           cards : localStorage.getItem("Cards") ? JSON.parse(localStorage.getItem("Cards")) : [] ,
            
         }
-       
     }
-    
+    onChangeCard() {
+        this.setState({
+            cards  : localStorage.getItem("Cards") ? JSON.parse(localStorage.getItem("Cards")) : []
+        })
+    }    
     render(){
         return(
         
             <Container>
                 <Row>
                     <Col>
-                        <AddCard/>
+                        <AddCard onChangeCard={this.onChangeCard.bind(this)}/>
                     </Col>
                     <Col>
-                        <CardList cards = {this.state.cards}/>
+                        <CardList onChangeCard={this.onChangeCard.bind(this)}
+                         cards = {this.state.cards}/>
                     </Col>
                 </Row>
                 <Row>

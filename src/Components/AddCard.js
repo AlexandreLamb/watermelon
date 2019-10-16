@@ -8,7 +8,8 @@ class AddCard extends Component {
              user : localStorage.getItem("connectUser"),
              last_4 : '',
              brand : 'Visa',
-             expired_at : ''
+             expired_at : '',
+             id : ''
            
         }
         this.registerCard = this.registerCard.bind(this);
@@ -24,8 +25,14 @@ class AddCard extends Component {
   }
     registerCard(props){
       let cards = localStorage.getItem("Cards") ? JSON.parse(localStorage.getItem("Cards")) : [] ;
+      let idTab = [];
+      cards.map(card =>{
+        idTab.push(card.id);
+      })
+      this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab)+1;
       cards.push(this.state);
       localStorage.setItem("Cards",JSON.stringify(cards));
+      this.props.onChangeCard();
     }
     render(){
         return(

@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
-import { ListGroup ,ListGroupItem} from 'react-bootstrap';
+import { ListGroup ,ListGroupItem, Button} from 'react-bootstrap';
 import CardItem from '../Components/CardItem';
 class CardList extends Component {
     constructor(props){
         super(props)
         this.state = {
-            tabTest : ["test","to","testz","tzo","ztest","tdo"]
+
         }
+        this.deleteCard = this.deleteCard.bind(this);
     }
+    deleteCard(card){
+        console.log(this.props.cards.indexOf(card))
+        this.props.cards.splice(this.props.cards.indexOf(card), 1);
+        console.log(this.props.cards)
+        localStorage.setItem("Cards",JSON.stringify(this.props.cards));
+        this.props.onChangeCard()
+        
+    }
+    
     
     render(){
         return(
             <div>
-                <ListCards cards={this.props.cards}/>
+                <ListCards cards={this.props.cards} deleteCard={this.deleteCard}/>
             </div>
         )
     }
@@ -20,11 +30,11 @@ class CardList extends Component {
 
 }
 function ListCards(props){
-    console.log(parseDate("2019-12-32"));
     return (
         <ListGroup>
                 {props.cards.map(card => (
-                    <ListGroupItem key={card.user + ""+ card.last_4}>
+                    <ListGroupItem key={card.id}>
+                       <Button onClick={props.deleteCard.bind(this, card)}>Delete</Button>
                         <CardItem
                         cvc={card.last_4}
                         expiry={parseDate(card.expired_at)}
@@ -36,9 +46,11 @@ function ListCards(props){
     )
     
 }
+
 function parseDate(date){
     date = date.toString();
     date = date.slice(2,7);
     return date.replace('-','/');
 }
+
 export default CardList;
