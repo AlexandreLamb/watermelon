@@ -29,6 +29,21 @@ class UserInscriptionPage extends Component {
             )
         }
     }
+    handleSubmit(){
+        let users = localStorage.getItem("Users");
+        
+        if(users.includes()){
+            alert("user already exist");
+        } else{
+            localStorage.setItem(
+                this.state.email,
+              JSON.stringify(  {
+                   id : this.state.id, 
+                   password :  this.state.password,
+                } )
+            )
+        }
+    }
     handleUsers(){
         let users  = localStorage.getItem('user');
         console.log(JSON.parse(users));
