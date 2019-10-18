@@ -21,19 +21,17 @@ class NavBar extends Component{
         
     }
     handleSubmit(){
-        let user = JSON.parse(localStorage.getItem(this.state.email));
-        console.log(user);
-        if( user && this.state.password == user.password ){
-            alert("succes conection");
-            localStorage.setItem("connectUser",this.state.email);
-           this.setState({
-               connected : true
-           })
-            
-        } else {
-            alert("informations de connexion incorect");
-
-        }
+        let users = JSON.parse(localStorage.getItem("Users"));
+        users.forEach(user => {
+            if( this.state.email == user.email && this.state.password == user.password){
+                alert("succes conection");
+                localStorage.setItem("connectUser",this.state.email);
+                this.setState({
+                    connected : true
+                })
+            }
+        });
+        
     }
     handleChange(event){
         this.setState({
