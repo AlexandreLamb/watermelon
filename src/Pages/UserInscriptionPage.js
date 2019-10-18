@@ -33,7 +33,6 @@ class UserInscriptionPage extends Component {
     }*/
     handleSubmit(){
         let users = localStorage.getItem("Users") ? JSON.parse(localStorage.getItem("Users")) : [];
-        console.log(this.checkUserExist(users))
         if (this.checkUserExist(users)){
             alert("User already exist");
         } else{
@@ -44,10 +43,6 @@ class UserInscriptionPage extends Component {
         
         
         
-    }
-    handleUsers(){
-        let users  = localStorage.getItem('user');
-        console.log(JSON.parse(users));
     }
     checkUserExist(users){
         let email  = this.state.email

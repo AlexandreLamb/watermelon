@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Button,FormControl,ListGroup    } from 'react-bootstrap';
-import handleChange from '../Utils/utils';
 class TransactionForm extends Component {
     constructor(props){
         super(props)
@@ -16,10 +15,9 @@ class TransactionForm extends Component {
             [event.target.name] : event.target.value
         });
     }
-    searchUser(event){
+    searchUser(){
         let users  = JSON.parse(localStorage.getItem("Users"));
         let userLike = [];
-        
         users.forEach(user => {
           if(user.email.includes(this.state.userSearch) && this.state.userSearch != ''){
               console.log(user.email + " " + this.state.userSearch + " " + user.email.includes(this.state.userSearch) && this.state.userSearch != '' )
@@ -28,21 +26,26 @@ class TransactionForm extends Component {
         });
         this.setState({
             userResult : userLike
-        });
+        })
     }
+
     render(){
         return(
             <div>
                 <FormControl type="text"
                  placeholder="User" 
                  className="mr-sm-2" 
+                 name="userSearch"
+                 onChange={this.handleChange}
                  value = {this.state.userSearch}
-                 onChange= {this.handleChange}/>
+                 />
                 <ListGroup>
-                    <ListGroup.Item>{this.state.userSearch}</ListGroup.Item>
-                    <ListGroup.Item>{this.state.userResult}</ListGroup.Item>
+                    {this.state.userResult.map(result =>(
+                        <ListGroup.Item key={result}>{result}</ListGroup.Item>
+                    ))}
+                    
                 </ListGroup>
-                <Button onClick={this.searchUser}></Button>
+                <Button onClick={this.searchUser}>Search</Button>
             </div>
         )
     }
