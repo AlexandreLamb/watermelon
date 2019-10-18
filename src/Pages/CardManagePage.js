@@ -25,8 +25,10 @@ class CardManagePage extends Component {
                         <AddCard mode ="Add" onChangeCard={this.onChangeCard.bind(this)}/>
                     </Col>
                     <Col>
-                        <CardList onChangeCard={this.onChangeCard.bind(this)}
-                         cards = {this.state.cards}/>
+                        <Container>
+                            <CardList onChangeCard={this.onChangeCard.bind(this)}
+                            cards = {this.state.cards}/>
+                        </Container>
                     </Col>
                 </Row>
                 <Row>

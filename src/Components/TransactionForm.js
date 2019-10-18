@@ -5,10 +5,12 @@ class TransactionForm extends Component {
         super(props)
         this.state = {
            userSearch : "",
-           userResult : []
+           userResult : [],
+           userSelect : ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.searchUser = this.searchUser.bind(this)
+        this.handleSelect = this.handleSelect.bind(this)
     }
     handleChange(event){
         this.setState({
@@ -28,6 +30,12 @@ class TransactionForm extends Component {
             userResult : userLike
         })
     }
+    handleSelect(eventKey){
+        this.setState({
+            userSelect : eventKey
+        })
+    }
+    
 
     render(){
         return(
@@ -39,9 +47,14 @@ class TransactionForm extends Component {
                  onChange={this.handleChange}
                  value = {this.state.userSearch}
                  />
-                <ListGroup>
+                <ListGroup onSelect={this.handleSelect}>
                     {this.state.userResult.map(result =>(
-                        <ListGroup.Item key={result}>{result}</ListGroup.Item>
+                        <ListGroup.Item 
+                        key={result}
+                         eventKey={result}
+                        >
+                        
+                        {result}</ListGroup.Item>
                     ))}
                     
                 </ListGroup>

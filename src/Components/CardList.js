@@ -29,7 +29,7 @@ class CardList extends Component {
 }
 function ListCards(props){
     return (
-        <ListGroup>
+        <ListGroup size="30px">
             
                 {props.cards.map(card => 
                 
