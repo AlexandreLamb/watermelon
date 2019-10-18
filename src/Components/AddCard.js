@@ -30,7 +30,7 @@ class AddCard extends Component {
       cards.map(card =>{
         idTab.push(card.id);
       })
-      this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab)+1;
+      this.state.id = ( idTab.length == 0 ? 1 : Math.max(...idTab)+1 );
       cards.push(this.state);
       localStorage.setItem("Cards",JSON.stringify(cards));
       this.props.onChangeCard();

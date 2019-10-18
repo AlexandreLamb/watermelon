@@ -10,13 +10,15 @@ class UserInscriptionPage extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.checkUserExist = this.checkUserExist.bind(this);
+        this.checkUserId = this.checkUserId.bind(this);
     }
     handleChange(event){
         this.setState({
             [event.target.name] : event.target.value
         });
     }
-    handleSubmit(){
+  /*  handleSubmit(){
         if(localStorage.getItem(this.state.email)){
             alert("user already exist");
         } else{
@@ -28,25 +30,41 @@ class UserInscriptionPage extends Component {
                 } )
             )
         }
-    }
+    }*/
     handleSubmit(){
-        let users = localStorage.getItem("Users");
-        
-        if(users.includes()){
-            alert("user already exist");
+        let users = localStorage.getItem("Users") ? JSON.parse(localStorage.getItem("Users")) : [];
+        console.log(this.checkUserExist(users))
+        if (this.checkUserExist(users)){
+            alert("User already exist");
         } else{
-            localStorage.setItem(
-                this.state.email,
-              JSON.stringify(  {
-                   id : this.state.id, 
-                   password :  this.state.password,
-                } )
-            )
+            this.checkUserId(users);
+            users.push(this.state);
+            localStorage.setItem("Users",JSON.stringify(users));
         }
+        
+        
+        
     }
     handleUsers(){
         let users  = localStorage.getItem('user');
         console.log(JSON.parse(users));
+    }
+    checkUserExist(users){
+        let email  = this.state.email
+        let userExist  = false;
+        users.forEach(function(user){
+            if(user.email == email){
+                userExist = true;
+            }
+        })
+    return userExist;
+    }
+    checkUserId(users){
+        let idTab = [];
+        users.forEach(function(user){
+            idTab.push(user.id);
+        })
+        this.state.id = ( idTab.length == 0 ? 1 : Math.max(...idTab)+1 );
     }
     render(){
         return(
@@ -84,4 +102,7 @@ class UserInscriptionPage extends Component {
 
 
 }
+
+
+
 export default UserInscriptionPage;
