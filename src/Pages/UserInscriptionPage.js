@@ -6,7 +6,9 @@ class UserInscriptionPage extends Component {
         this.state = {
            email : "",
            password : "",
-           id : 0
+           id : 0,
+           fname: "",
+           lname : "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -75,6 +77,7 @@ class UserInscriptionPage extends Component {
                         <Form.Text className="text-muted">
                         </Form.Text>
                     </Form.Group>
+
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password"
@@ -83,6 +86,23 @@ class UserInscriptionPage extends Component {
                         onChange={this.handleChange}
                         value={this.state.password} />
                     </Form.Group>
+
+                    < Form.Group controlId = "formGridFname" >
+                        <Form.Label > First name </Form.Label> 
+                        <Form.Control placeholder = "Jacques" 
+                        name="fname"
+                        onChange={this.handleChange}
+                        value={this.state.fname} /> 
+                    </Form.Group>
+
+                    < Form.Group controlId = "formGridLname" >
+                        <Form.Label > Last name </Form.Label> 
+                        <Form.Control placeholder = "Chirac" 
+                        name="fname"
+                        onChange={this.handleChange}
+                        value={this.state.lname} /> 
+                    </Form.Group>
+
                     <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
