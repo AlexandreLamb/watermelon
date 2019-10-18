@@ -20,19 +20,6 @@ class UserInscriptionPage extends Component {
             [event.target.name] : event.target.value
         });
     }
-  /*  handleSubmit(){
-        if(localStorage.getItem(this.state.email)){
-            alert("user already exist");
-        } else{
-            localStorage.setItem(
-                this.state.email,
-              JSON.stringify(  {
-                   id : this.state.id, 
-                   password :  this.state.password,
-                } )
-            )
-        }
-    }*/
     handleSubmit(){
         let users = localStorage.getItem("Users") ? JSON.parse(localStorage.getItem("Users")) : [];
         if (this.checkUserExist(users)){
