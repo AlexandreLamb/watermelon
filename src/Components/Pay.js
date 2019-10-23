@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Container } from "react-bootstrap";
-
+import {findUserId} from "../Utils/utils"
 class Pay extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +9,6 @@ class Pay extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.findUserId = this.findUserId.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -19,7 +18,7 @@ class Pay extends Component {
   handleSubmit() {
     if (this.state.amout >= 1) {
       let wallets = JSON.parse(localStorage.getItem("Wallets"));
-      let userId = this.findUserId();
+      let userId = findUserId(localStorage.getItem("connectUser"));
       wallets.forEach(wallet => {
         if (wallet.userId == userId) {
           if (this.props.mode == "in") {
@@ -34,17 +33,7 @@ class Pay extends Component {
       alert("Minimum pay in is 1 $");
     }
   }
-  findUserId() {
-    let userEmail = localStorage.getItem("connectUser");
-    let users = JSON.parse(localStorage.getItem("Users"));
-    let userId = -1;
-    users.forEach(user => {
-      if (user.email == userEmail) {
-        userId = user.id;
-      }
-    });
-    return userId;
-  }
+  
 
   render() {
     return (
