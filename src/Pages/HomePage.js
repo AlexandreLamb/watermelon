@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import TransactionForm from "../Components/TransactionForm";
 import PayForm from "../Components/PayForm";
+import TransfertsPage from "./TransfertsPage";
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,9 @@ class HomePage extends Component {
       <div>
         <Container>
           <Row>
+            <Col>
+              <TransfertsPage/>
+            </Col>
             <Col>
               <TransactionForm />
             </Col>
