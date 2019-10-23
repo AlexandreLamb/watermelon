@@ -9,6 +9,7 @@ class Transaction extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.findUserId = this.findUserId.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
     this.setState({
@@ -16,16 +17,23 @@ class Transaction extends Component {
     });
   }
   handleSubmit() {
-    let userId = this.findUserId();
+    let userIdIn = this.findUserId(this.props.userSelect);
+    let userIdOut = this.findUserId(localStorage.getItem("connectUser"))
     let wallets = JSON.parse(localStorage.getItem("Wallets"));
-    if(this.state.amountTransfert >= 1){
-        wallets.forEach(wallet => {
-            
-        });
+    if (this.state.amountTransfert >= 1) {
+      wallets.forEach(wallet => {
+        if (wallet.userId == userIdIn) {
+          wallet.balance += this.state.amountTransfert * 100;
+        } else if (wallet.userId == userIdOut){
+            wallet.balance -= this.state.amountTransfert * 100;
+        }
+      });
+      localStorage.setItem("Wallets",JSON.stringify(wallets));
+    } else {
+      alert("minimum transfert is 1 $");
     }
   }
-  findUserId() {
-    let userEmail = this.props.userSelect;
+  findUserId(userEmail) {
     let users = JSON.parse(localStorage.getItem("Users"));
     let userId = -1;
     users.forEach(user => {
