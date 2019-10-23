@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import TransactionForm from "../Components/TransactionForm";
-import PayForm from "../Components/PayForm";
-class HomePage extends Component {
+import { Col, Row, Container } from "react-bootstrap";
+import Pay from "./Pay";
+class PayForm extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,10 +13,10 @@ class HomePage extends Component {
         <Container>
           <Row>
             <Col>
-              <TransactionForm />
+              <Pay mode="out" />
             </Col>
             <Col>
-              <PayForm />
+              <Pay mode="in" />
             </Col>
           </Row>
         </Container>
@@ -25,4 +24,5 @@ class HomePage extends Component {
     );
   }
 }
-export default HomePage;
+
+export default PayForm;

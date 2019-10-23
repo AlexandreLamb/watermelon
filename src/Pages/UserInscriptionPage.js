@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Form, Button} from 'react-bootstrap'
+import { stat } from 'fs';
 class UserInscriptionPage extends Component {
     constructor(props){
         super(props)
@@ -14,6 +15,7 @@ class UserInscriptionPage extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.checkUserExist = this.checkUserExist.bind(this);
         this.checkUserId = this.checkUserId.bind(this);
+        this.checkWalletId = this.checkWalletId.bind(this)
     }
     handleChange(event){
         this.setState({
@@ -28,6 +30,13 @@ class UserInscriptionPage extends Component {
             this.checkUserId(users);
             users.push(this.state);
             localStorage.setItem("Users",JSON.stringify(users));
+            let wallets = localStorage.getItem("Wallets") ? JSON.parse(localStorage.getItem("Wallets")) : [];
+            wallets.push({
+                id : this.checkWalletId(wallets),
+                userId : this.state.id,
+                balance : 0,
+            })
+            localStorage.setItem("Wallets",JSON.stringify(wallets))
         }
         
         
@@ -49,6 +58,13 @@ class UserInscriptionPage extends Component {
             idTab.push(user.id);
         })
         this.state.id = ( idTab.length == 0 ? 1 : Math.max(...idTab)+1 );
+    }
+    checkWalletId(wallets){
+        let idTab = [];
+        wallets.forEach(function(wallet){
+            idTab.push(wallet.id);
+        })
+        return ( idTab.length == 0 ? 1 : Math.max(...idTab)+1 );
     }
     render(){
         return(

@@ -4,6 +4,7 @@ import HomePage from '../Pages/HomePage';
 import UserInscriptionPage from '../Pages/UserInscriptionPage'
 import { Route, Switch } from 'react-router-dom';
 import CardManagePage from '../Pages/CardManagePage';
+import LoginPage from "../Pages/LoginPage";
 export default () =>
 <Switch>
     <Route exact path="/"
