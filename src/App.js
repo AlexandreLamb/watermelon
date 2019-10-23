@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavBar from './Components/NavBar';
-import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage';
 import { BrowserRouter, Route, Link} from 'react-router-dom';
 // email prof technoweb : 
 // kevin.frydman@esquad.co
@@ -9,8 +9,8 @@ import { BrowserRouter, Route, Link} from 'react-router-dom';
 // Object.assaign({}, object)
 function App() {
   return (
-    <div>
-     <NavBar/>
+    <div className="App">
+     <LoginPage/>
     </div>
         
   );
