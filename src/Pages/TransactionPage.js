@@ -3,30 +3,28 @@ import { Row, Col, Container, Alert } from "react-bootstrap";
 import TransactionForm from "../Components/TransactionForm";
 import PayForm from "../Components/PayForm";
 import TransfertsPage from "./TransfertsPage";
+import { returnTransfertsIn, returnTransfertsOut } from "../Utils/utils";
 class TransactionPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transferts: localStorage.getItem("Transfers")
-        ? JSON.parse(localStorage.getItem("Transfers"))
-        : []
+      transfertsIn: returnTransfertsIn(),
+      transfertsOut : returnTransfertsOut()
     };
   }
   onChangeTransaction() {
     this.setState({
-      transferts: localStorage.getItem("Transfers")
-        ? JSON.parse(localStorage.getItem("Transfers"))
-        : []
+      transfertsIn: returnTransfertsIn(),
+      transfertsOut : returnTransfertsOut()
     },this.props.onChangeBalance());
   }
 
   render() {
     return (
       <div>
-        <Container>
           <Row>
             <Col>
-              <TransfertsPage transferts={this.state.transferts} />
+              <TransfertsPage transfertsOut={this.state.transfertsOut} transfertsIn={this.state.transfertsIn} />
             </Col>
             <Col>
               <TransactionForm
@@ -34,7 +32,6 @@ class TransactionPage extends Component {
               />
             </Col>
           </Row>
-        </Container>
       </div>
     );
   }

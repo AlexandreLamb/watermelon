@@ -19,7 +19,7 @@ export function findUserId(userEmail) {
 export function returnUserId(user) {
   return user.id;
 }
-export function returnFullName(userId){
+export function returnFullName(userId) {
   let users = JSON.parse(localStorage.getItem("Users"));
   let fullName = "";
   users.forEach(user => {
@@ -39,13 +39,43 @@ export function findWallet(user) {
   });
   return wallet;
 }
-export function findBalance(){
+export function returnTransfertsIn() {
+  let user = returnUser();
+  let wallet = findWallet(user);
+  let transferts = localStorage.getItem("Transfers")
+    ? JSON.parse(localStorage.getItem("Transfers"))
+    : [];
+  let transfertIn = [];
+  transferts.forEach(elmt => {
+    if (elmt.credited_wallet_id == wallet.id)  {
+      transfertIn.push(elmt);
+    }
+  });
+  return transfertIn;
+}
+export function returnTransfertsOut() {
+  let user = returnUser();
+  let wallet = findWallet(user);
+  let transferts = localStorage.getItem("Transfers")
+    ? JSON.parse(localStorage.getItem("Transfers"))
+    : [];
+  let transfertOut = [];
+  transferts.forEach(elmt => {
+    if (elmt.debited_wallet_id == wallet.id)  {
+      transfertOut.push(elmt);
+    }
+  });
+  return transfertOut;
+}
+export function findBalance() {
   let wallet = findWallet(returnUser());
   return wallet.balance;
 }
-export function returnUser(){
+export function returnUser() {
   return JSON.parse(localStorage.getItem("connectUser"));
 }
-export function returnUsers(){
-  return localStorage.getItem("Users") ? JSON.parse(localStorage.getItem("Users")) : []
+export function returnUsers() {
+  return localStorage.getItem("Users")
+    ? JSON.parse(localStorage.getItem("Users"))
+    : [];
 }

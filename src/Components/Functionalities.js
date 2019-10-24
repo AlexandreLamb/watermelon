@@ -9,29 +9,39 @@ class Functionalities extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      balance : findBalance()
+      balance: findBalance()
     };
   }
-  onChangeBalance(){
+  onChangeBalance() {
     this.setState({
-      balance : findBalance()
-    })
+      balance: findBalance()
+    });
   }
 
   render() {
     return (
       <div>
-        <NavBarHome onChangeConnection={this.props.onChangeConnection}/>
+        <NavBarHome onChangeConnection={this.props.onChangeConnection} />
         <Container>
           Balance : {this.state.balance}
           <Row>
             <Col>
-              <TransactionPage onChangeBalance={this.onChangeBalance.bind(this)} />
+              <TransactionPage
+                onChangeBalance={this.onChangeBalance.bind(this)}
+              />
             </Col>
             <Col>
-              <PayForm isRenderByRouter={false} onChangeBalance={this.onChangeBalance.bind(this)}/>
+              <PayForm
+                isRenderByRouter={false}
+                onChangeBalance={this.onChangeBalance.bind(this)}
+              />
             </Col>
+          </Row>
+          <Row>
+            <Col></Col>
+            <Col></Col>
             <Col>
+              {" "}
               <CardManagePage />
             </Col>
           </Row>
