@@ -13,7 +13,6 @@ class CardItem extends Component {
     this.updateNav = this.updateNav.bind(this);
   }
   updateNav(props) {
-    console.log(props);
     this.setState({
       navItem: props
     });

@@ -34,14 +34,7 @@ class FormSearchUser extends Component {
         user.email.includes(this.state.userSearch) &&
         this.state.userSearch != ""
       ) {
-        console.log(
-          user.email +
-            " " +
-            this.state.userSearch +
-            " " +
-            user.email.includes(this.state.userSearch) &&
-            this.state.userSearch != ""
-        );
+        
         userLike.push(user.email);
       }
     });

@@ -16,7 +16,6 @@ class TransactionForm extends Component {
     });
   }
   onChangeUserSelect(props) {
-    console.log(props);
     this.setState({
       userSelect: props
     });

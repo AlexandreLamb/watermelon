@@ -22,7 +22,6 @@ class LoginPage extends Component {
   }
   handleSubmit() {
     let users = returnUsers();
-    console.log(users + " " + users.length)
     if(users.length ==  0){
       alert("error connection")
     }else{

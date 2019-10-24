@@ -18,9 +18,12 @@ class Pay extends Component {
   handleSubmit() {
     if (this.state.amout >= 1) {
       let wallets = JSON.parse(localStorage.getItem("Wallets"));
-      let user = localStorage.getItem("connectUser");
+      let user = JSON.parse(localStorage.getItem("connectUser"));
+      console.log(this.state.amout)
       wallets.forEach(wallet => {
+        console.log(wallet.userId + " " + user.id)
         if (wallet.userId == user.id) {
+          console.log(this.props.mode)
           if (this.props.mode == "in") {
             wallet.balance += this.state.amout * 100;
           } else {
@@ -28,6 +31,7 @@ class Pay extends Component {
           }
         }
       });
+      console.log(wallets)
       localStorage.setItem("Wallets", JSON.stringify(wallets));
       this.props.onChangeBalance();
     } else {

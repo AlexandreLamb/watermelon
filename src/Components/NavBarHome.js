@@ -51,7 +51,7 @@ class NavBarHome extends Component {
   render() {
     return (
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">Watermelon</Navbar.Brand>
+          <Navbar.Brand>Watermelon</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -61,11 +61,24 @@ class NavBarHome extends Component {
                 </LinkContainer>
               </Nav.Link>
               <Nav.Link>
-                <LinkContainer to="/Demonstration">
+                <LinkContainer to="/userInfo">
                   <NavItem>User Information</NavItem>
                 </LinkContainer>
               </Nav.Link>
               <Nav.Link>
+                <LinkContainer to="/pay">
+                  <NavItem>Pay in / Pay out</NavItem>
+                </LinkContainer>
+              </Nav.Link>
+              <Nav.Link>
+                <LinkContainer to="/transfert">
+                  <NavItem>Transfert</NavItem>
+                </LinkContainer>
+              </Nav.Link>
+              <Nav.Link>
+                <LinkContainer to="/CardManagePage">
+                  <NavItem>Card Manage</NavItem>
+                </LinkContainer>
                 <LinkContainer to="/CardManagePage">
                   <NavItem>Card Manage</NavItem>
                 </LinkContainer>

@@ -35,7 +35,7 @@ class UserInscriptionPage extends Component {
       users.push({
         email: this.state.email,
         password: this.state.password,
-        id: this.state.password,
+        id: this.state.id,
         fname: this.state.fname,
         lname: this.state.lname
       });
