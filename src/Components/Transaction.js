@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import FormSearchUser from "./FormSearchUser";
-import { checkId , findUserId} from "../Utils/utils";
+import { checkId, findUserId } from "../Utils/utils";
 class Transaction extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ class Transaction extends Component {
   }
   handleSubmit() {
     let userIdIn = findUserId(this.props.userSelect);
-    let userIdOut = findUserId(localStorage.getItem("connectUser"));
+    let userOut = localStorage.getItem("connectUser");
     let wallets = JSON.parse(localStorage.getItem("Wallets"));
     let transferts = localStorage.getItem("Transfers")
       ? JSON.parse(localStorage.getItem("Transfers"))
@@ -38,7 +38,7 @@ class Transaction extends Component {
         if (wallet.userId == userIdIn) {
           wallet.balance += this.state.amountTransfert * 100;
           transfert.credited_wallet_id = wallet.id;
-        } else if (wallet.userId == userIdOut) {
+        } else if (wallet.userId == userOut.id) {
           wallet.balance -= this.state.amountTransfert * 100;
           transfert.debited_wallet_id = wallet.id;
         }
@@ -49,11 +49,12 @@ class Transaction extends Component {
       transferts.push(this.state.transfert);
       localStorage.setItem("Wallets", JSON.stringify(wallets));
       localStorage.setItem("Transfers", JSON.stringify(transferts));
+
+      this.props.onChangeTransaction();
     } else {
       alert("minimum transfert is 1 $");
     }
   }
-
 
   render() {
     return (

@@ -5,9 +5,6 @@ class TransfertsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transferts: localStorage.getItem("Transfers")
-        ? JSON.parse(localStorage.getItem("Transfers"))
-        : []
     };
     this.findUserEmail = this.findUserEmail.bind(this)
   }
@@ -34,7 +31,7 @@ class TransfertsPage extends Component {
         <ListGroup size="30px">
           {" "}
           My Transferts
-          {this.state.transferts.map(transfert => (
+          {this.props.transferts.map(transfert => (
             <ListGroupItem key={transfert.id}>
               <Transfert
                 amout={transfert.amout}

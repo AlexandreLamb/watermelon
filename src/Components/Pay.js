@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 import {findUserId} from "../Utils/utils"
 class Pay extends Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class Pay extends Component {
   handleSubmit() {
     if (this.state.amout >= 1) {
       let wallets = JSON.parse(localStorage.getItem("Wallets"));
-      let userId = findUserId(localStorage.getItem("connectUser"));
+      let user = localStorage.getItem("connectUser");
       wallets.forEach(wallet => {
-        if (wallet.userId == userId) {
+        if (wallet.userId == user.id) {
           if (this.props.mode == "in") {
             wallet.balance += this.state.amout * 100;
           } else {
@@ -29,6 +29,7 @@ class Pay extends Component {
         }
       });
       localStorage.setItem("Wallets", JSON.stringify(wallets));
+      this.props.onChangeBalance();
     } else {
       alert("Minimum pay in is 1 $");
     }

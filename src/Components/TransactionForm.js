@@ -35,7 +35,7 @@ class TransactionForm extends Component {
             </Row>
             <Row>
             <Col>
-              <DisplayTransaction userSelect={this.state.userSelect} />
+              <DisplayTransaction onChangeTransaction={this.props.onChangeTransaction} userSelect={this.state.userSelect} />
             </Col>
             </Row>
         </Container>
@@ -47,7 +47,7 @@ function DisplayTransaction(props) {
   if (props.userSelect == "") {
     return <div></div>;
   } else {
-    return <Transaction userSelect={props.userSelect} />;
+    return <Transaction onChangeTransaction={props.onChangeTransaction} userSelect={props.userSelect} />;
   }
 }
 export default TransactionForm;

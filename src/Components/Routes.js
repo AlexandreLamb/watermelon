@@ -9,6 +9,8 @@ export default () =>
 <Switch>
     <Route exact path="/"
     component={HomePage}/>
+    <Route path="/home"
+    component={HomePage}/>
     <Route path="/UserInformation"
     component={UserInformationPage}/>
     <Route path="/UserInscription"
