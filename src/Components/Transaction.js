@@ -24,7 +24,7 @@ class Transaction extends Component {
   }
   handleSubmit() {
     let userIdIn = findUserId(this.props.userSelect);
-    let userOut = localStorage.getItem("connectUser");
+    let userOut = JSON.parse(localStorage.getItem("connectUser"));
     let wallets = JSON.parse(localStorage.getItem("Wallets"));
     let transferts = localStorage.getItem("Transfers")
       ? JSON.parse(localStorage.getItem("Transfers"))

@@ -7,31 +7,59 @@ class PayForm extends Component {
     super(props);
     this.state = {
       user : localStorage.getItem("connectUser") ? JSON.parse(localStorage.getItem("connectUser")) : {},
-      wallet : findWallet(JSON.parse(localStorage.getItem("connectUser")))
+      wallet : findWallet(JSON.parse(localStorage.getItem("connectUser"))),
     };
+    
   }
   onChangeBalance(){
-    this.setState({
-      wallet : findWallet(JSON.parse(localStorage.getItem("connectUser")))
-    })
+    console.log("hey")
   }
+  
 
   render() {
     return (
       <div>
         <Container>
-          Balance : {this.state.wallet.balance}
           <Row>
             <Col>
-              <Pay mode="out" onChangeBalance={this.onChangeBalance.bind(this)} />
+              <Pay mode="out" isRenderByRouter={this.props.isRenderByRouter} onChangeBalance={this.props.onChangeBalance} />
             </Col>
             <Col>
-              <Pay mode="in" onChangeBalance={this.onChangeBalance.bind(this)} />
+              <Pay mode="in" isRenderByRouter={this.props.isRenderByRouter} onChangeBalance={this.props.onChangeBalance} />
             </Col>
           </Row>
         </Container>
       </div>
     );
+  }
+}
+function DisplayPay(props){
+  if(props.isRenderByRouter){
+    return (
+      <Container>
+          <Row>
+            <Col>
+              <Pay mode="out" onChangeBalance={props.onChangeBalance} />
+            </Col>
+            <Col>
+              <Pay mode="in" onChangeBalance={props.onChangeBalance} />
+            </Col>
+          </Row>
+        </Container>
+    );
+  }else {
+    return (
+      <Container>
+          <Row>
+            <Col>
+              <Pay mode="out" onChangeBalance={this.props.onChangeBalance} />
+            </Col>
+            <Col>
+              <Pay mode="in" onChangeBalance={this.props.onChangeBalance} />
+            </Col>
+          </Row>
+        </Container>
+    )
   }
 }
 

@@ -39,6 +39,13 @@ export function findWallet(user) {
   });
   return wallet;
 }
+export function findBalance(){
+  let wallet = findWallet(returnUser());
+  return wallet.balance;
+}
+export function returnUser(){
+  return JSON.parse(localStorage.getItem("connectUser"));
+}
 export function returnUsers(){
   return localStorage.getItem("Users") ? JSON.parse(localStorage.getItem("Users")) : []
 }

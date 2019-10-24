@@ -13,7 +13,7 @@ export default () => (
   <Switch>
     <Route exact path="/" component={HomePage} />
     <Route path="/home" component={HomePage} />
-    <Route path="/pay" component={PayForm} />
+    <Route path="/pay" component={() => <PayForm isRenderByRouter={true} />} />
     <Route path="/transfert" component={TransactionPage} />
 
     <Route path="/UserInformation" component={UserInformationPage} />

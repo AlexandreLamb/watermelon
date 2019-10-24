@@ -4,10 +4,18 @@ import PayForm from "./PayForm";
 import CardManagePage from "../Pages/CardManagePage";
 import TransactionPage from "../Pages/TransactionPage";
 import NavBarHome from "./NavBarHome";
+import { findBalance } from "../Utils/utils";
 class Functionalities extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      balance : findBalance()
+    };
+  }
+  onChangeBalance(){
+    this.setState({
+      balance : findBalance()
+    })
   }
 
   render() {
@@ -15,18 +23,19 @@ class Functionalities extends Component {
       <div>
         <NavBarHome onChangeConnection={this.props.onChangeConnection}/>
         <Container>
+          Balance : {this.state.balance}
           <Row>
             <Col>
-              <TransactionPage />
+              <TransactionPage onChangeBalance={this.onChangeBalance.bind(this)} />
             </Col>
             <Col>
-              <PayForm />
+              <PayForm isRenderByRouter={false} onChangeBalance={this.onChangeBalance.bind(this)}/>
             </Col>
             <Col>
               <CardManagePage />
             </Col>
           </Row>
-        </Container>{" "}
+        </Container>
       </div>
     );
   }

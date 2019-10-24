@@ -17,7 +17,7 @@ class TransactionPage extends Component {
       transferts: localStorage.getItem("Transfers")
         ? JSON.parse(localStorage.getItem("Transfers"))
         : []
-    });
+    },this.props.onChangeBalance());
   }
 
   render() {
