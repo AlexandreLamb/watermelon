@@ -34,6 +34,8 @@ class LoginPage extends Component {
         alert("succes conection");
         localStorage.setItem("connectUser", JSON.stringify(user));
         this.props.onChangeConnection();
+      } else{
+        alert("wrong information")
       }
     });
   }

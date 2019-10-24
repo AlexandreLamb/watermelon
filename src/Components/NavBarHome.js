@@ -18,10 +18,10 @@ class NavBarHome extends Component {
       email: "",
       password: "",
       connected: false,
-      redirect : false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.disconectUser = this.disconectUser.bind(this)
   }
   handleSubmit() {
     let users = JSON.parse(localStorage.getItem("Users"));
@@ -44,21 +44,12 @@ class NavBarHome extends Component {
     });
   }
   disconectUser(){
-    localStorage.setItem("connectUser","");
-    this.setState({
-      redirect : true
-    })
-
+    localStorage.removeItem("connectUser");
+    this.props.onChangeConnection();
   }
-  renderRedirect() {
-    if (this.state.redirect) {
-      return <Redirect to="/" />;
-    }
-  }
+  
   render() {
     return (
-      <BrowserRouter>
-      {this.renderRedirect()}
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="#home">Watermelon</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -83,11 +74,8 @@ class NavBarHome extends Component {
             <Button onClick={this.disconectUser}>Disconect</Button>
           </Navbar.Collapse>
         </Navbar>
-        <Routes />
-      </BrowserRouter>
     );
   }
 }
-
 
 export default NavBarHome;
