@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Container, Alert } from "react-bootstrap";
+import { Row, Col, Container, Alert,Button } from "react-bootstrap";
 import TransactionForm from "../Components/TransactionForm";
 import PayForm from "../Components/PayForm";
 import TransfertsPage from "./TransfertsPage";
@@ -14,18 +14,26 @@ class HomePage extends Component {
     this.state = {
       isConnect: localStorage.getItem("connectUser") ? true : false
     };
+    this.onChangeConnection = this.onChangeConnection.bind(this)
+    this.disconectUser = this.disconectUser.bind(this)
   }
   onChangeConnection() {
     this.setState({
       isConnect: localStorage.getItem("connectUser") ? true : false
     });
   }
+  disconectUser(){
+    localStorage.removeItem("connectUser");
+    this.onChangeConnection()
+  }
   render() {
     return (
       <div>
+
         <DisplayConnection
-          onChangeConnection={this.onChangeConnection.bind(this)}
+          onChangeConnection={this.onChangeConnection}
           isConnect={this.state.isConnect}
+          disconectUser={this.disconectUser}
         />
       </div>
     );
@@ -35,7 +43,9 @@ function DisplayConnection(props) {
   if (props.isConnect) {
     return (
       <div>
-        <Functionalities onChangeConnection={props.onChangeConnection} />
+        <Functionalities />
+        <Button onClick={props.disconectUser} >Disconect</Button>
+
       </div>
     );
   } else {

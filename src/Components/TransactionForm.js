@@ -31,12 +31,15 @@ class TransactionForm extends Component {
                 onChangeUserSelect={this.onChangeUserSelect.bind(this)}
               />
             </Col>
-            </Row>
-            <Row>
+          </Row>
+          <Row>
             <Col>
-              <DisplayTransaction onChangeTransaction={this.props.onChangeTransaction} userSelect={this.state.userSelect} />
+              <DisplayTransaction
+                onChangeTransaction={this.props.onChangeTransaction}
+                userSelect={this.state.userSelect}
+              />
             </Col>
-            </Row>
+          </Row>
         </Container>
       </div>
     );
@@ -46,7 +49,12 @@ function DisplayTransaction(props) {
   if (props.userSelect == "") {
     return <div></div>;
   } else {
-    return <Transaction onChangeTransaction={props.onChangeTransaction} userSelect={props.userSelect} />;
+    return (
+      <Transaction
+        onChangeTransaction={props.onChangeTransaction}
+        userSelect={props.userSelect}
+      />
+    );
   }
 }
 export default TransactionForm;
