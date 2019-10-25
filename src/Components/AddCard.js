@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Card, Container, Row, Col, Form, Button } from "react-bootstrap";
+import {
+    Card,
+    Container,
+    Row,
+    Col,
+    Form,
+    Button,
+    Alert
+} from "react-bootstrap";
 import { returnUserId, returnCards } from "../Utils/utils";
 class AddCard extends Component {
     constructor(props) {
@@ -9,7 +17,9 @@ class AddCard extends Component {
             last_4: props.last_4 ? props.last_4 : "",
             brand: props.brand ? props.brand : "Visa",
             expired_at: props.expired_at ? props.expired_at : "",
-            id: props.id ? props.id : ""
+            id: props.id ? props.id : "",
+            displayAlert: false,
+            alertMessage: ""
         };
         this.registerCard = this.registerCard.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -21,26 +31,65 @@ class AddCard extends Component {
         });
     }
     registerCard(props) {
-        let cards = returnCards();
-        let idTab = [];
-        cards.map(card => {
-            idTab.push(card.id);
-        });
-        this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab) + 1;
-        cards.push(this.state);
-        localStorage.setItem("Cards", JSON.stringify(cards));
-        this.props.onChangeCard();
+        let date = new Date();
+        let dateFormat =
+            date.getFullYear() +
+            "-" +
+            (date.getMonth() + 1) +
+            "-" +
+            date.getDate();
+        if (this.state.last_4.length == 4) {
+            if (this.state.expired_at > dateFormat) {
+                let cards = returnCards();
+                let idTab = [];
+                cards.map(card => {
+                    idTab.push(card.id);
+                });
+                this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab) + 1;
+                cards.push({
+                    user_id: this.state.user_id,
+                    last_4: this.state.last_4,
+                    brand: this.state.brand,
+                    expired_at: this.state.expired_at,
+                    id: this.state.id
+                });
+                localStorage.setItem("Cards", JSON.stringify(cards));
+                this.props.onChangeCard();
+                this.setState({
+                    displayAlert: false,
+                });
+            } else {
+                this.setState({
+                    displayAlert: true,
+                    alertMessage: "Please enter a valid date"
+                });
+            }
+        } else {
+            this.setState({
+                displayAlert: true,
+                alertMessage: "Please enter you'r 4 last card number"
+            });
+        }
     }
     updateCard(props) {
         let cards = returnCards();
-        console.log("id : " +this.props.card.id)
         this.setState({
-          id : this.props.card.id
-        })
-        console.log(this.state)
-        cards.splice(this.props.cards.indexOf(this.props.card), 1, this.state);
+            id: this.props.card.id
+        });
+        cards.splice(this.props.cards.indexOf(this.props.card), 1, {
+            user_id: this.state.user_id,
+            last_4: this.state.last_4,
+            brand: this.state.brand,
+            expired_at: this.state.expired_at,
+            id: this.state.id
+        });
         localStorage.setItem("Cards", JSON.stringify(cards));
         this.props.onChangeCard();
+    }
+    onCloseAlert() {
+        this.setState({
+            displayAlert: false
+        });
     }
     render() {
         return (
@@ -107,6 +156,11 @@ class AddCard extends Component {
                         </Form>
                     </Card.Body>
                 </Card>
+                <AlertDismissibleExample
+                    displayAlert={this.state.displayAlert}
+                    onCloseAlert={this.onCloseAlert.bind(this)}
+                    alertMessage={this.state.alertMessage}
+                />
             </div>
         );
     }
@@ -117,6 +171,16 @@ function TitleMode(props) {
     } else {
         return <Card.Title>Update Card</Card.Title>;
     }
+}
+function AlertDismissibleExample(props) {
+    if (props.displayAlert) {
+        return (
+            <Alert variant="danger" onClick={props.onCloseAlert} dismissible>
+                {props.alertMessage}
+            </Alert>
+        );
+    }
+    return <div></div>;
 }
 
 export default AddCard;
