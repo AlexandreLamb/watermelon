@@ -45,6 +45,7 @@ function ListCards(props) {
             name={returnFullName(card.user)}
             card={card}
             cards={props.cards}
+            brand={card.brand}
             onChangeCard={props.onChangeCard}
           />
         </ListGroupItem>
