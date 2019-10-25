@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import Pay from "./Pay";
-import {  findWallet } from "../Utils/utils";
+import {  findWallet, findBalance } from "../Utils/utils";
 import NavBarHome from "../Components/NavBarHome"
 class PayForm extends Component {
   constructor(props) {
@@ -9,11 +9,14 @@ class PayForm extends Component {
     this.state = {
       user : localStorage.getItem("connectUser") ? JSON.parse(localStorage.getItem("connectUser")) : {},
       wallet : findWallet(JSON.parse(localStorage.getItem("connectUser"))),
+      balance : findBalance()
     };
-    
+    this.onChangeBalance = this.onChangeBalance.bind(this)
   }
   onChangeBalance(){
-    console.log("hey")
+    this.setState({
+      balance : findBalance()
+    })
   }
   renderGoBack() {
     if (this.props.isRenderByRouter) {
@@ -29,12 +32,13 @@ class PayForm extends Component {
       <div>
         {this.renderGoBack()}
         <Container>
+          Balance : {this.state.balance}
           <Row>
             <Col>
-              <Pay mode="out" isRenderByRouter={this.props.isRenderByRouter} onChangeBalance={this.props.onChangeBalance} />
+              <Pay mode="out" isRenderByRouter={this.props.isRenderByRouter} onChangeBalance={this.onChangeBalance} />
             </Col>
             <Col>
-              <Pay mode="in" isRenderByRouter={this.props.isRenderByRouter} onChangeBalance={this.props.onChangeBalance} />
+              <Pay mode="in" isRenderByRouter={this.props.isRenderByRouter} onChangeBalance={this.onChangeBalance} />
             </Col>
           </Row>
         </Container>

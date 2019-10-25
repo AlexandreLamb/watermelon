@@ -34,9 +34,7 @@ class Pay extends Component {
       console.log(wallets)
       localStorage.setItem("Wallets", JSON.stringify(wallets));
       
-      if(!this.props.isRenderByRouter){
         this.props.onChangeBalance();
-      }
     } else {
       alert("Minimum pay in is 1 $");
     }
