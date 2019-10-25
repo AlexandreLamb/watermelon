@@ -7,7 +7,7 @@ import {
   FormControl,
   Button
 } from "react-bootstrap";
-import { BrowserRouter, Redirect, NavLink } from "react-router-dom";
+import { BrowserRouter, Redirect, NavLink ,Link} from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 
@@ -17,11 +17,12 @@ class NavBarHome extends Component {
     this.state = {
       email: "",
       password: "",
-      connected: false,
+      isConnect: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.disconectUser = this.disconectUser.bind(this)
+    this.onChangeConnection = this.onChangeConnection.bind(this)
   }
   handleSubmit() {
     let users = JSON.parse(localStorage.getItem("Users"));
@@ -43,10 +44,16 @@ class NavBarHome extends Component {
       [event.target.name]: event.target.value
     });
   }
+  onChangeConnection() {
+    this.setState({
+      isConnect: localStorage.getItem("connectUser") ? true : false
+    });
+  }
   disconectUser(){
     localStorage.removeItem("connectUser");
     this.props.onChangeConnection();
   }
+
   
   render() {
     return (
@@ -79,14 +86,11 @@ class NavBarHome extends Component {
                 <LinkContainer to="/CardManagePage">
                   <NavItem>Card Manage</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/CardManagePage">
-                  <NavItem>Card Manage</NavItem>
-                </LinkContainer>
               </Nav.Link>
             </Nav>
-            <Button onClick={this.disconectUser}>Disconect</Button>
           </Navbar.Collapse>
         </Navbar>
+       
     );
   }
 }
