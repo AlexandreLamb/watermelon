@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { Nav } from "react-bootstrap";
 import Cards from "react-credit-cards";
 import AddCard from "../Components/AddCard";
-import { returnUserId, returnFullName, return4FirstCardNumber } from "../Utils/utils";
+import {
+    returnUserId,
+    returnFullName,
+    return4FirstCardNumber
+} from "../Utils/utils";
 
 import "react-credit-cards/es/styles-compiled.css";
 
@@ -42,7 +46,7 @@ class CardItem extends Component {
                 <DisplayCard
                     cvc={this.props.cvc}
                     expiry={this.props.expiry}
-                    name={ returnFullName(returnUserId()) }
+                    name={returnFullName(returnUserId())}
                     number=""
                     brand={this.props.brand}
                     navItem={this.state.navItem}
@@ -57,13 +61,13 @@ class CardItem extends Component {
 
 function DisplayCard(props) {
     if (props.navItem == "infoCard") {
-      let first_4= return4FirstCardNumber(props.brand)
+        let first_4 = return4FirstCardNumber(props.brand);
         return (
             <Cards
                 cvc={props.cvc}
                 expiry={parseDate(props.expiry)}
                 name={props.name}
-                number={ first_4 + "**** ****" + props.cvc}
+                number={first_4 + "**** ****" + props.cvc}
             />
         );
     } else {

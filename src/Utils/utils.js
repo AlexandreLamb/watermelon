@@ -127,5 +127,5 @@ export function returnTransfertsOut() {
 
 export function findBalance() {
     let wallet = findWallet(returnUser());
-    return wallet.balance;
+    return wallet.balance/100;
 }
