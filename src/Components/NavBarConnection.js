@@ -10,26 +10,23 @@ import {
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
-import NavBarHome from "../Components/NavBarHome";
-import NavBarConnection from "../Components/NavBarConnection";
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isConnect: false
-    };
   }
-
   render() {
-    return <DisplayNavBar isConnect={this.state.isConnect} />;
+    return (
+      <BrowserRouter>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">Watermelon</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+      </Navbar>
+      <Routes/>
+      </BrowserRouter>
+    );
   }
 }
-function DisplayNavBar(props) {
-  if (props.isConnect) {
-    return <NavBarHome />;
-  } else {
-    return <NavBarConnection />;
-  }
-}
+
 export default NavBar;

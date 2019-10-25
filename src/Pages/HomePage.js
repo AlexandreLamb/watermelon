@@ -1,31 +1,46 @@
-import React, { Component } from 'react';
-import {Row,Col,Container} from 'react-bootstrap';
-import TransactionForm from '../Components/TransactionForm'
+import React, { Component } from "react";
+import { Row, Col, Container, Alert } from "react-bootstrap";
+import TransactionForm from "../Components/TransactionForm";
+import PayForm from "../Components/PayForm";
+import TransfertsPage from "./TransfertsPage";
+import CardManagePage from "./CardManagePage";
+import TransactionPage from "./TransactionPage";
+import LoginPage from "./LoginPage";
+import Functionalities from "../Components/Functionalities";
+import NavBarHome from "../Components/NavBarHome";
 class HomePage extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-           
-        }
-    }
-    render(){
-        return(
-            <div>
-                <Container>
-                <Row>
-                    <Col><TransactionForm/></Col>
-                    <Col>2 of 2</Col>
-                </Row>
-                <Row>
-                    <Col>1 of 3</Col>
-                    <Col>2 of 3</Col>
-                    <Col>3 of 3</Col>
-                </Row>
-                </Container>
-            </div>
-        )
-    }
-
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      isConnect: localStorage.getItem("connectUser") ? true : false
+    };
+  }
+  onChangeConnection() {
+    this.setState({
+      isConnect: localStorage.getItem("connectUser") ? true : false
+    });
+  }
+  render() {
+    return (
+      <div>
+        <DisplayConnection
+          onChangeConnection={this.onChangeConnection.bind(this)}
+          isConnect={this.state.isConnect}
+        />
+      </div>
+    );
+  }
 }
+function DisplayConnection(props) {
+  if (props.isConnect) {
+    return (
+      <div>
+        <Functionalities onChangeConnection={props.onChangeConnection} />
+      </div>
+    );
+  } else {
+    return <LoginPage onChangeConnection={props.onChangeConnection} />;
+  }
+}
+
 export default HomePage;
