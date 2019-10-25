@@ -44,7 +44,7 @@ export function returnFullName(userId) {
     let users = JSON.parse(localStorage.getItem("Users"));
     let fullName = "";
     users.forEach(user => {
-        if (user.email == userId) {
+        if (user.id == userId) {
             fullName = user.fname + " " + user.lname;
         }
     });
