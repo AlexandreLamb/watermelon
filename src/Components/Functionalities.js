@@ -22,7 +22,16 @@ class Functionalities extends Component {
     return (
       <div>
         <NavBarHome onChangeConnection={this.props.onChangeConnection} />
-        <Container>
+        
+      </div>
+    );
+  }
+}
+
+export default Functionalities;
+/*
+
+<Container>
           Balance : {this.state.balance}
           <Row>
             <Col>
@@ -46,9 +55,5 @@ class Functionalities extends Component {
             </Col>
           </Row>
         </Container>
-      </div>
-    );
-  }
-}
 
-export default Functionalities;
+*/

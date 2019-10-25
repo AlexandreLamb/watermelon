@@ -30,8 +30,9 @@ class CardManagePage extends Component {
   }
   render() {
     return (
-      <Container>
+      <div>
         {this.renderGoBack()}
+      <Container>
         <Row>
           <Col>
             <AddCard mode="Add" onChangeCard={this.onChangeCard.bind(this)} />
@@ -49,6 +50,7 @@ class CardManagePage extends Component {
           <Col></Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

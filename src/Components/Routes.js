@@ -14,9 +14,9 @@ export default () => (
     <Route exact path="/" component={HomePage} />
     <Route path="/home" component={HomePage} />
     <Route path="/pay" component={() => <PayForm isRenderByRouter={true} />} />
-    <Route path="/transfert" component={TransactionPage} />
+    <Route path="/transfert" component={()=> <TransactionPage isRenderByRouter={true} />} />
 
-    <Route path="/UserInformation" component={UserInformationPage} />
+    <Route path="/UserInformation" component={()=> <UserInformationPage isRenderByRouter={true} />} />
     <Route path="/UserInscription" component={UserInscriptionPage} />
     <Route path="/CardManagePage" component={() => <CardManagePage isRenderByRouter={true} />} />
   </Switch>

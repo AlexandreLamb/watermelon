@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import Pay from "./Pay";
 import {  findWallet } from "../Utils/utils";
+import NavBarHome from "../Components/NavBarHome"
 class PayForm extends Component {
   constructor(props) {
     super(props);
