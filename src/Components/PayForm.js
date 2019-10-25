@@ -14,11 +14,19 @@ class PayForm extends Component {
   onChangeBalance(){
     console.log("hey")
   }
+  renderGoBack() {
+    if (this.props.isRenderByRouter) {
+      return (
+        <NavBarHome/>
+        );
+    }
+  }
   
 
   render() {
     return (
       <div>
+        {this.renderGoBack()}
         <Container>
           <Row>
             <Col>
