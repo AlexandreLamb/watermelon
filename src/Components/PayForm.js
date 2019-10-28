@@ -31,7 +31,12 @@ class PayForm extends Component {
             <div>
                 {this.renderGoBack()}
                 <Container>
+<<<<<<< HEAD
                     <Button disabled >Balance : {this.state.balance} </Button>
+=======
+                    <Button color={ this.state.balance > 100 ? "sucess" : "danger"}>{this.state.balance}</Button>
+                    Balance : {this.state.balance}
+>>>>>>> 890d17978095ce2ecfc847376f9b630334413f27
                     <Row>
                         <Col>
                             <Pay
