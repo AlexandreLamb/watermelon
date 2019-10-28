@@ -30,11 +30,9 @@ class LoginPage extends Component {
         this.state.email == user.email &&
         this.state.password == user.password
       ) {
-        alert("succes conection");
         localStorage.setItem("connectUser", JSON.stringify(user));
         this.props.onChangeConnection();
       } else{
-        alert("wrong information")
       }
     });
   }

@@ -8,24 +8,33 @@ import TransactionPage from "./TransactionPage";
 import LoginPage from "./LoginPage";
 import Functionalities from "../Components/Functionalities";
 import NavBarHome from "../Components/NavBarHome";
+import { apiRequestUser} from "../Utils/api"
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isConnect: localStorage.getItem("connectUser") ? true : false
+      isConnect: localStorage.getItem("connectUser") ? true : false,
+      isUsersLoadByApi : localStorage.getItem("isUsersLoadByApi") ? localStorage.getItem("isUsersLoadByApi") : false
     };
     this.onChangeConnection = this.onChangeConnection.bind(this)
     this.disconectUser = this.disconectUser.bind(this)
   }
   onChangeConnection() {
     this.setState({
-      isConnect: localStorage.getItem("connectUser") ? true : false
+      isConnect: localStorage.getItem("connectUser") ? false : true
     });
   }
   disconectUser(){
     localStorage.removeItem("connectUser");
     this.onChangeConnection()
   }
+  componentDidMount(){
+    if(!this.state.isUsersLoadByApi){
+      apiRequestUser();
+      localStorage.setItem("isUsersLoadByApi",true)
+    }
+  }
+  
   render() {
     return (
       <div>
