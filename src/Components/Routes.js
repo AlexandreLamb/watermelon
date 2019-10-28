@@ -7,6 +7,7 @@ import CardManagePage from "../Pages/CardManagePage";
 import LoginPage from "../Pages/LoginPage";
 import PayForm from "./PayForm";
 import TransactionPage from "../Pages/TransactionPage";
+import UserUpdatePage from"../Pages/UserUpdatePage";
 import NavBarHome from "./NavBarHome";
 export default () => (
     <BrowserRouter>
@@ -16,8 +17,8 @@ export default () => (
     <Route path="/pay" component={() => <PayForm isRenderByRouter={true} />} />
     <Route path="/transfert" component={()=> <TransactionPage isRenderByRouter={true} />} />
 
-    <Route path="/UserInformation" component={()=> <UserInformationPage isRenderByRouter={true} />} />
-    <Route path="/UserInscription" component={UserInscriptionPage} />
+    <Route path="/UserUpdatePage" component={()=> <UserUpdatePage isRenderByRouter={true} isUpdate={true}/>} />
+    <Route path="/UserInscription" component={()=> <UserInscriptionPage isRenderByRouter={true} isUpdate={false}/>} />
     <Route path="/CardManagePage" component={() => <CardManagePage isRenderByRouter={true} />} />
   </Switch>
   </BrowserRouter>

@@ -56,7 +56,7 @@ class AddCard extends Component {
                 localStorage.setItem("Cards", JSON.stringify(cards));
                 this.props.onChangeCard();
                 this.setState({
-                    displayAlert: false,
+                    displayAlert: false
                 });
             } else {
                 this.setState({

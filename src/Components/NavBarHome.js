@@ -68,7 +68,7 @@ class NavBarHome extends Component {
                 </LinkContainer>
               </Nav.Link>
               <Nav.Link>
-                <LinkContainer to="/userInfo">
+                <LinkContainer to="/UserUpdatePage">
                   <NavItem>User Information</NavItem>
                 </LinkContainer>
               </Nav.Link>
