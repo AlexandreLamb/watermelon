@@ -19,14 +19,17 @@ class HomePage extends Component {
     this.onChangeConnection = this.onChangeConnection.bind(this)
     this.disconectUser = this.disconectUser.bind(this)
   }
-  onChangeConnection() {
+  onChangeConnection(props) {
+    console.log(props)
     this.setState({
-      isConnect: localStorage.getItem("connectUser") ? false : true
+      isConnect: props
     });
+    console.log(this.state.isConnect)
+
   }
   disconectUser(){
     localStorage.removeItem("connectUser");
-    this.onChangeConnection()
+    this.onChangeConnection(false)
   }
   componentDidMount(){
     if(!this.state.isUsersLoadByApi){
