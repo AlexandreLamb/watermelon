@@ -32,10 +32,17 @@ class Functionalities extends Component {
                         <Col>bootstrap</Col>
                     </Row>
                     <Row>
-                        <Col>axios ( use for get the user ramdomnly with the api : https://randomuser.me/ )</Col>
+                        <Col>
+                            axios ( use for get the user ramdomnly with the api
+                            : https://randomuser.me/ )
+                        </Col>
                     </Row>
                     <Row>
-                        <Col>react-credit-cards (use for display style credit card : https://github.com/amarofashion/react-credit-cards )</Col>
+                        <Col>
+                            react-credit-cards (use for display style credit
+                            card :
+                            https://github.com/amarofashion/react-credit-cards )
+                        </Col>
                     </Row>
                     <Row>
                         <Col>react-router-dom</Col>

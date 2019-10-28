@@ -49,7 +49,6 @@ class UserUpdatePage extends Component {
                 }
             });
 
-            
             localStorage.setItem("Users", JSON.stringify(users));
             localStorage.setItem(
                 "connectUser",

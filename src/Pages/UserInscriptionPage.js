@@ -95,7 +95,9 @@ class UserInscriptionPage extends Component {
             <div>
                 {this.renderRedirect()}
                 <form action="/">
-                    <Button type="submit" value="Back">Go back</Button>
+                    <Button type="submit" value="Back">
+                        Go back
+                    </Button>
                 </form>
                 <Form noValidate onSubmit={this.handleSubmit}>
                     <Form.Group controlId="validationCustom01">

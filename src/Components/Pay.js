@@ -34,15 +34,15 @@ class Pay extends Component {
                         if (this.props.mode == "in") {
                             wallet.balance += this.state.amout * 100;
                         } else {
-                          if(wallet.balance - this.state.amout >= 0){
-                            wallet.balance -= this.state.amout * 100;
-                          }
-                          else{
-                            this.setState({
-                              displayAlert: true,
-                              alertMessage: "Minimum of pay out is what you have on you'r balance"
-                          });
-                          }
+                            if (wallet.balance - this.state.amout >= 0) {
+                                wallet.balance -= this.state.amout * 100;
+                            } else {
+                                this.setState({
+                                    displayAlert: true,
+                                    alertMessage:
+                                        "Minimum of pay out is what you have on you'r balance"
+                                });
+                            }
                         }
                     }
                 });
@@ -78,7 +78,11 @@ class Pay extends Component {
                                 <Form.Control
                                     type="number"
                                     min="0"
-                                    max={this.props.mode == "out" ? findBalance() : ""  }
+                                    max={
+                                        this.props.mode == "out"
+                                            ? findBalance()
+                                            : ""
+                                    }
                                     name="amout"
                                     value={this.state.amout}
                                     onChange={this.handleChange}

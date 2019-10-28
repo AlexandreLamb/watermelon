@@ -54,10 +54,10 @@ class Transaction extends Component {
 
             this.props.onChangeTransaction();
         } else {
-          this.setState({
-            displayAlert: true,
-            alertMessage: "Minimum of transaction is 1 $"
-        });
+            this.setState({
+                displayAlert: true,
+                alertMessage: "Minimum of transaction is 1 $"
+            });
         }
     }
     onCloseAlert() {

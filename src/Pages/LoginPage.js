@@ -25,21 +25,21 @@ class LoginPage extends Component {
     }
     handleSubmit() {
         let users = returnUsers();
-        
-            users.forEach(user => {
-                if (
-                    this.state.email == user.email &&
-                    this.state.password == user.password
-                ) {
-                    localStorage.setItem("connectUser", JSON.stringify(user));
-                    this.props.onChangeConnection(true);
-                }
-            });
-        
+
+        users.forEach(user => {
+            if (
+                this.state.email == user.email &&
+                this.state.password == user.password
+            ) {
+                localStorage.setItem("connectUser", JSON.stringify(user));
+                this.props.onChangeConnection(true);
+            }
+        });
+
         this.setState({
-          displayAlert : true,
-          alertMessage : "wrong connexion informations"
-        })
+            displayAlert: true,
+            alertMessage: "wrong connexion informations"
+        });
     }
     onCloseAlert() {
         this.setState({
@@ -86,6 +86,11 @@ class LoginPage extends Component {
                     <Link variant="outline-success" to="/UserInscription">
                         Inscription
                     </Link>
+                    <Alert variant="info">
+                        Tips : use rigth clik and inspect to open devlopper
+                        tool's and go to Application tabs to see the
+                        localStorage and find users generate by an API{" "}
+                    </Alert>
                     <AlertDismissibleExample
                         onCloseAlert={this.onCloseAlert.bind(this)}
                         displayAlert={this.state.displayAlert}
