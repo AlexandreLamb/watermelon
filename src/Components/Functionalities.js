@@ -6,26 +6,44 @@ import TransactionPage from "../Pages/TransactionPage";
 import NavBarHome from "./NavBarHome";
 import { findBalance } from "../Utils/utils";
 class Functionalities extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      balance: findBalance()
-    };
-  }
-  onChangeBalance() {
-    this.setState({
-      balance: findBalance()
-    });
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            balance: findBalance()
+        };
+    }
+    onChangeBalance() {
+        this.setState({
+            balance: findBalance()
+        });
+    }
 
-  render() {
-    return (
-      <div>
-        <NavBarHome onChangeConnection={this.props.onChangeConnection} />
-        
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <NavBarHome
+                    onChangeConnection={this.props.onChangeConnection}
+                />
+                <Container>
+                    <Row>
+                        <Col>Package npm use</Col>
+                    </Row>
+                    <Row>
+                        <Col>bootstrap</Col>
+                    </Row>
+                    <Row>
+                        <Col>axios ( use for get the user ramdomnly with the api : https://randomuser.me/ )</Col>
+                    </Row>
+                    <Row>
+                        <Col>react-credit-cards (use for display style credit card : https://github.com/amarofashion/react-credit-cards )</Col>
+                    </Row>
+                    <Row>
+                        <Col>react-router-dom</Col>
+                    </Row>{" "}
+                </Container>
+            </div>
+        );
+    }
 }
 
 export default Functionalities;
