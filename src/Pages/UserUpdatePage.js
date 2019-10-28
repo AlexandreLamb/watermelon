@@ -37,7 +37,6 @@ class UserUpdatePage extends Component {
         } else if (form.checkValidity() === false) {
             alert("Please write in each field");
         } else {
-            console.log(users.indexOf(returnUser()));
 
             users.forEach(elmt => {
                 if (elmt.id == returnUser().id) {

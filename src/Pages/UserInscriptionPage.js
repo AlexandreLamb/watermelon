@@ -26,8 +26,6 @@ class UserInscriptionPage extends Component {
     }
     handleSubmit(event) {
         const form = event.currentTarget;
-        console.log(form);
-
         let users = localStorage.getItem("Users")
             ? JSON.parse(localStorage.getItem("Users"))
             : [];
@@ -38,11 +36,10 @@ class UserInscriptionPage extends Component {
         } else if (form.checkValidity() === false) {
             alert("Please write in each field");
         } else {
-            this.checkUserId(users);
             users.push({
                 email: this.state.email,
                 password: this.state.password,
-                id: this.state.id,
+                id: this.checkUserId(users),
                 fname: this.state.fname,
                 lname: this.state.lname
             });
@@ -52,7 +49,7 @@ class UserInscriptionPage extends Component {
                 : [];
             wallets.push({
                 id: this.checkWalletId(wallets),
-                userId: this.state.id,
+                userId: this.checkUserId(users),
                 balance: 0
             });
             localStorage.setItem("Wallets", JSON.stringify(wallets));
@@ -76,9 +73,8 @@ class UserInscriptionPage extends Component {
         users.forEach(function(user) {
             idTab.push(user.id);
         });
-        this.setState({
-            id : idTab.length == 0 ? 1 : Math.max(...idTab) + 1
-        })
+        return idTab.length == 0 ? 1 : Math.max(...idTab) + 1;
+        
     }
     checkWalletId(wallets) {
         let idTab = [];

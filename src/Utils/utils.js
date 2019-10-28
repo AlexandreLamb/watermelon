@@ -35,6 +35,19 @@ export function returnCards() {
         ? JSON.parse(localStorage.getItem("Cards"))
         : [];
 }
+export function returnUserCards() {
+    let user = returnUser();
+    let cards = localStorage.getItem("Cards")
+        ? JSON.parse(localStorage.getItem("Cards"))
+        : [];
+    let userCards = [];
+    cards.forEach(card => {
+        if (card.user_id == user.id) {
+            userCards.push(card);
+        }
+    });
+    return userCards
+}
 
 /**
  * Users Functions

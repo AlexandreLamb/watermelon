@@ -3,13 +3,12 @@ import AddCard from "../Components/AddCard";
 import CardList from "../Components/CardList";
 import { Container, Row, Col } from "react-bootstrap";
 import NavBarHome from "../Components/NavBarHome";
+import { returnUserCards } from "../Utils/utils";
 class CardManagePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cards: localStorage.getItem("Cards")
-                ? JSON.parse(localStorage.getItem("Cards"))
-                : []
+            cards: returnUserCards()
         };
     }
     onChangeCard() {

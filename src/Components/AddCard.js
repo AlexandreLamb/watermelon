@@ -42,9 +42,10 @@ class AddCard extends Component {
             if (this.state.expired_at > dateFormat) {
                 let cards = returnCards();
                 let idTab = [];
-                cards.foreach(card => {
+                cards.forEach(card => {
                     idTab.push(card.id);
                 });
+                console.log()
                 this.setState({
                     id : idTab.length == 0 ? 1 : Math.max(...idTab) + 1
                 })
@@ -54,7 +55,7 @@ class AddCard extends Component {
                     last_4: this.state.last_4,
                     brand: this.state.brand,
                     expired_at: this.state.expired_at,
-                    id: this.state.id
+                    id: idTab.length == 0 ? 1 : Math.max(...idTab) + 1
                 });
                 localStorage.setItem("Cards", JSON.stringify(cards));
                 this.props.onChangeCard();

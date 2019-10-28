@@ -72,7 +72,7 @@ class Pay extends Component {
             <div>
                 <Container>
                     <Form>
-                        <Form.Group as={Col} controlId="formGroupEmail">
+                        <Form.Group as={Col} controlId="form">
                             <PayLabel mode={this.props.mode} />
                             <InputGroup>
                                 <Form.Control

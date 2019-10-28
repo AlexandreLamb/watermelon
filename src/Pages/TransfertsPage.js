@@ -35,7 +35,7 @@ class TransfertsPage extends Component {
                                 {this.props.transfertsIn.map(transfert => (
                                     <ListGroupItem key={transfert.id}>
                                         <Transfert
-                                            amout={transfert.amout}
+                                            amout={transfert.amout/100}
                                             from={this.findUserEmail(
                                                 transfert.debited_wallet_id
                                             )}
@@ -51,7 +51,7 @@ class TransfertsPage extends Component {
                                 {this.props.transfertsOut.map(transfert => (
                                     <ListGroupItem key={transfert.id}>
                                         <Transfert
-                                            amout={transfert.amout}
+                                            amout={transfert.amout/100}
                                             mode="out"
                                             to={this.findUserEmail(
                                                 transfert.credited_wallet_id
