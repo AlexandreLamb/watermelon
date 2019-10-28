@@ -1,14 +1,11 @@
 import React from "react";
-import UserInformationPage from "../Pages/UserInformationPage";
 import HomePage from "../Pages/HomePage";
 import UserInscriptionPage from "../Pages/UserInscriptionPage";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import CardManagePage from "../Pages/CardManagePage";
-import LoginPage from "../Pages/LoginPage";
 import PayForm from "./PayForm";
 import TransactionPage from "../Pages/TransactionPage";
 import UserUpdatePage from "../Pages/UserUpdatePage";
-import NavBarHome from "./NavBarHome";
 export default () => (
     <BrowserRouter>
         <Switch>

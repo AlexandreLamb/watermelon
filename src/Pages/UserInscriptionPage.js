@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class UserInscriptionPage extends Component {
     constructor(props) {
@@ -76,7 +76,9 @@ class UserInscriptionPage extends Component {
         users.forEach(function(user) {
             idTab.push(user.id);
         });
-        this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab) + 1;
+        this.setState({
+            id : idTab.length == 0 ? 1 : Math.max(...idTab) + 1
+        })
     }
     checkWalletId(wallets) {
         let idTab = [];

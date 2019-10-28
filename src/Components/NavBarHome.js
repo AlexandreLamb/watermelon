@@ -3,13 +3,9 @@ import {
     Navbar,
     NavItem,
     Nav,
-    Form,
-    FormControl,
-    Button
+    
 } from "react-bootstrap";
-import { BrowserRouter, Redirect, NavLink, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import Routes from "./Routes";
 
 class NavBarHome extends Component {
     constructor(props) {

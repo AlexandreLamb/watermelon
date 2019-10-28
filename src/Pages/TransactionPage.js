@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Row, Col, Container, Alert } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import TransactionForm from "../Components/TransactionForm";
-import PayForm from "../Components/PayForm";
 import TransfertsPage from "./TransfertsPage";
 import {
     returnTransfertsIn,

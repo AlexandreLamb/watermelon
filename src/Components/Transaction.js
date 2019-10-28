@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-import FormSearchUser from "./FormSearchUser";
 import { checkId, findUserId, findBalance } from "../Utils/utils";
 class Transaction extends Component {
     constructor(props) {

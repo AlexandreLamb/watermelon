@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ListGroup, ListGroupItem, Button, Nav } from "react-bootstrap";
+import { ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import CardItem from "../Components/CardItem";
 import { returnFullName } from "../Utils/utils";
 class CardList extends Component {

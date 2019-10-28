@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { Link, useHistory, Route, NavLink } from "react-router-dom";
-import Routes from "../Components/Routes";
+import { Link} from "react-router-dom";
 import { returnUsers } from "../Utils/utils";
-import { breakStatement } from "@babel/types";
 class LoginPage extends Component {
     constructor(props) {
         super(props);

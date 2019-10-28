@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Container, Alert, Button } from "react-bootstrap";
-import PayForm from "./PayForm";
-import CardManagePage from "../Pages/CardManagePage";
-import TransactionPage from "../Pages/TransactionPage";
+import { Row, Col, Container } from "react-bootstrap";
 import NavBarHome from "./NavBarHome";
 import { findBalance } from "../Utils/utils";
 class Functionalities extends Component {

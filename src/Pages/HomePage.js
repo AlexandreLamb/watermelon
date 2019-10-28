@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col, Container, Alert, Button } from "react-bootstrap";
-import TransactionForm from "../Components/TransactionForm";
-import PayForm from "../Components/PayForm";
-import TransfertsPage from "./TransfertsPage";
-import CardManagePage from "./CardManagePage";
-import TransactionPage from "./TransactionPage";
+import { Button } from "react-bootstrap";
 import LoginPage from "./LoginPage";
 import Functionalities from "../Components/Functionalities";
-import NavBarHome from "../Components/NavBarHome";
 import { apiRequestUser } from "../Utils/api";
 class HomePage extends Component {
     constructor(props) {

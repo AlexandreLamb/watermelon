@@ -42,10 +42,13 @@ class AddCard extends Component {
             if (this.state.expired_at > dateFormat) {
                 let cards = returnCards();
                 let idTab = [];
-                cards.map(card => {
+                cards.foreach(card => {
                     idTab.push(card.id);
                 });
-                this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab) + 1;
+                this.setState({
+                    id : idTab.length == 0 ? 1 : Math.max(...idTab) + 1
+                })
+                
                 cards.push({
                     user_id: this.state.user_id,
                     last_4: this.state.last_4,

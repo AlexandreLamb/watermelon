@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
-import { returnUser, returnTransfertsIn } from "../Utils/utils";
+import { Redirect } from "react-router-dom";
+import { returnUser } from "../Utils/utils";
 
 class UserUpdatePage extends Component {
     constructor(props) {
@@ -80,7 +80,9 @@ class UserUpdatePage extends Component {
         users.forEach(function(user) {
             idTab.push(user.id);
         });
-        this.state.id = idTab.length == 0 ? 1 : Math.max(...idTab) + 1;
+        this.setState({
+            id : idTab.length == 0 ? 1 : Math.max(...idTab) + 1
+        })
     }
     checkWalletId(wallets) {
         let idTab = [];

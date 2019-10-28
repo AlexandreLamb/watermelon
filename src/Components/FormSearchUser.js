@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import {
-    Button,
     FormControl,
     ListGroup,
     FormGroup,
     FormLabel
 } from "react-bootstrap";
-import { returnUser, findBalance } from "../Utils/utils";
+import { returnUser } from "../Utils/utils";
 class FormSearchUser extends Component {
     constructor(props) {
         super(props);

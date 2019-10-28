@@ -53,46 +53,6 @@ class PayForm extends Component {
         );
     }
 }
-function DisplayPay(props) {
-    if (props.isRenderByRouter) {
-        return (
-            <Container>
-                <Row>
-                    <Col>
-                        <Pay
-                            mode="out"
-                            onChangeBalance={props.onChangeBalance}
-                        />
-                    </Col>
-                    <Col>
-                        <Pay
-                            mode="in"
-                            onChangeBalance={props.onChangeBalance}
-                        />
-                    </Col>
-                </Row>
-            </Container>
-        );
-    } else {
-        return (
-            <Container>
-                <Row>
-                    <Col>
-                        <Pay
-                            mode="out"
-                            onChangeBalance={this.props.onChangeBalance}
-                        />
-                    </Col>
-                    <Col>
-                        <Pay
-                            mode="in"
-                            onChangeBalance={this.props.onChangeBalance}
-                        />
-                    </Col>
-                </Row>
-            </Container>
-        );
-    }
-}
+
 
 export default PayForm;
