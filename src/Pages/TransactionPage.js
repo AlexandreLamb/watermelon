@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col,Button } from "react-bootstrap";
 import TransactionForm from "../Components/TransactionForm";
 import TransfertsPage from "./TransfertsPage";
 import {
@@ -34,7 +34,7 @@ class TransactionPage extends Component {
         return (
             <div>
                 {this.renderGoBack()}
-                Balance : {this.state.balance}
+                <Button disabled>Balance : {this.state.balance} </Button>
                 <Row>
                     <Col>
                         <TransfertsPage
