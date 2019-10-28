@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { returnUser } from "../Utils/utils";
+import NavBarHome from "../Components/NavBarHome";
 
 class UserUpdatePage extends Component {
     constructor(props) {
@@ -95,15 +96,15 @@ class UserUpdatePage extends Component {
             return <Redirect to="/" />;
         }
     }
+    renderGoBack() {
+        if (this.props.isRenderByRouter) {
+            return <NavBarHome />;
+        }
+    }
     render() {
         return (
             <div>
-                {this.renderRedirect()}
-                <form action="/">
-                    <Button type="submit" value="Back">
-                        Go back
-                    </Button>
-                </form>
+                {this.renderGoBack()}
                 <Form noValidate onSubmit={this.handleSubmit}>
                     <Form.Group controlId="validationCustom01">
                         <Form.Label>Email address</Form.Label>

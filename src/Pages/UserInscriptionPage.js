@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
+import { returnUserId } from "../Utils/utils";
 
 class UserInscriptionPage extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class UserInscriptionPage extends Component {
                 : [];
             wallets.push({
                 id: this.checkWalletId(wallets),
-                userId: this.checkUserId(users),
+                userId: this.checkUserId(users)-1,
                 balance: 0
             });
             localStorage.setItem("Wallets", JSON.stringify(wallets));

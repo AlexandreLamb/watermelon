@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container,Button } from "react-bootstrap";
 import Pay from "./Pay";
 import { findWallet, findBalance } from "../Utils/utils";
 import NavBarHome from "../Components/NavBarHome";
@@ -31,6 +31,7 @@ class PayForm extends Component {
             <div>
                 {this.renderGoBack()}
                 <Container>
+                    <Button color={ this.state.balance > 100 ? "sucess" : "danger"}>{this.state.balance}</Button>
                     Balance : {this.state.balance}
                     <Row>
                         <Col>
